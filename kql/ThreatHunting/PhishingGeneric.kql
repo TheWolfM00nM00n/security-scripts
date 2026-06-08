@@ -1,0 +1,5 @@
+let url = "www.phishinglink.com";
+union isfuzzy=true UrlClickEvents, DeviceNetworkEvents
+| where Timestamp between (ago(10d) .. now())
+| where Url has url or RemoteUrl has url
+| summarize Users = make_set(AccountUpn), Count = count() by Url

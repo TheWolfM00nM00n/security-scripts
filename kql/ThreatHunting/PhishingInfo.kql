@@ -1,0 +1,10 @@
+let url = "www.phishinglink.com";
+search in (EmailUrlInfo,UrlClickEvents,DeviceNetworkEvents,DeviceFileEvents,DeviceEvents,BehaviorEntities)
+Timestamp between (ago(10d) .. now())
+and (RemoteUrl has url
+or FileOriginUrl has url
+or FileOriginReferrerUrl has url
+or Url has url
+)
+| take 100
+
